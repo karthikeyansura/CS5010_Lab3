@@ -16,4 +16,15 @@ public class ItemByUnitTest {
     assertEquals("ItemByUnit", item.getType());
     assertEquals(4.95, item.price(), 0.001);
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativeUnits() {
+    new ItemByUnit("Apple", -5, 0.99);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativePricePerUnit() {
+    new ItemByUnit("Apple", 5, -0.99);
+  }
+
 }

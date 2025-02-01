@@ -16,4 +16,15 @@ public class ItemByWeightTest {
     assertEquals("ItemByWeight", item.getType());
     assertEquals(4.975, item.price(), 0.001);
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativeWeight() {
+    new ItemByWeight("Potatoes", -2.5, 1.99);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativePricePerPound() {
+    new ItemByWeight("Potatoes", 2.5, -1.99);
+  }
+
 }

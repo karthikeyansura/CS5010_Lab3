@@ -16,4 +16,10 @@ public class BundleItemTest {
     assertEquals("BundleItem", item.getType());
     assertEquals(4.95, item.price(), 0.001);
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativeBundleQuantity() {
+    new BundleItem("Apple", 5, -0.99);
+  }
+
 }

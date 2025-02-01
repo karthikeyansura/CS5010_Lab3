@@ -16,4 +16,15 @@ public class ItemByQuantityTest {
     assertEquals("ItemByQuantity", item.getType());
     assertEquals(2.40, item.price(), 0.001);
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativeQuantity() {
+    new ItemByQuantity("Eggs", -1, 0.20);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNegativePricePerQuantity() {
+    new ItemByQuantity("Eggs", 12, -0.20);
+  }
+
 }
